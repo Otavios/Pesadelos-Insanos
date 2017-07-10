@@ -35,7 +35,7 @@ enum inimigos{aranha, bp, palhaco, mariposa, foguinho, boss1, boss2};
 
 enum armas{pistola, shotgun, sub, rpg, sniper, laser};
 
-enum tipoProjeteis{circular};
+enum tipoProjeteis{circular, retangular};
 
 bool verificaColisao(double x1, double y1, double w1, double h1, double x2, double y2, double w2, double h2);
 

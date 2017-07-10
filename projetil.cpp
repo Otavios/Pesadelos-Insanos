@@ -19,7 +19,7 @@ Projetil::Projetil(Ponto pos, Vetor velocidade, int largura, int altura, int tip
 	this->tipo = tipo;
 	this->range = range;
 	this->cor = cor;
-	
+
 	verticeInicial[0] = Ponto(pos.getX()-largura/2, pos.getY()-altura/2);
 	verticeInicial[1] = Ponto(pos.getX()+largura/2, pos.getY()-altura/2);
 	verticeInicial[2] = Ponto(pos.getX()+largura/2, pos.getY()+altura/2);
@@ -31,7 +31,7 @@ Projetil::Projetil(Ponto pos, Vetor velocidade, int largura, int altura, int tip
 		v[i].color = al_map_rgb(0, 255, 0);
 		vertice[i] = verticeInicial[i];
 	}
-	
+
 	angulo = 0;
 }
 
@@ -42,9 +42,17 @@ void Projetil::andar(){
 	}
 }
 
-void Projetil::desenhar(bool mostrarHitbox){	
+void Projetil::desenhar(bool mostrarHitbox){
 	if(tipo == circular){
 		al_draw_filled_circle(pos.getX(), pos.getY(), largura*0.6, cor);
+	}
+	else if(tipo == retangular){
+		for(int i = 0; i < 4; i++)
+			v[i].color = al_map_rgb(0, 0, 255);
+        al_draw_prim(v, NULL, 0, 0, 4, ALLEGRO_PRIM_TRIANGLE_FAN);
+        for(int i = 0; i < 4; i++)
+			v[i].color = al_map_rgb(0, 255, 0);
+        al_draw_prim(v, NULL, 0, 0, 4, ALLEGRO_PRIM_LINE_LOOP);
 	}
 	if(mostrarHitbox)
 		al_draw_prim(v, NULL, 0, 0, 4, ALLEGRO_PRIM_LINE_LOOP);

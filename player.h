@@ -13,7 +13,8 @@ class Player{
 		int vida;
 		int vidaMax;
 		Ponto pos, verticeInicial[4], vertice[4];
-		int velocidade;
+		double velocidade;
+		double velocidadeMax;
 		double largura, altura;
 		int arma;
 		int dinheiro;
@@ -23,11 +24,11 @@ class Player{
 		ALLEGRO_VERTEX v[4];
 		double angulo;
 		static ALLEGRO_BITMAP *spritePistola, *spriteShotgun, *spriteSub, *spriteRPG;
-		
+
 
 	public:
 		Player();
-		Player(Ponto, int, double, double, int, int, int);
+		Player(Ponto, double, double, double, int, int, int);
 		void desenhar(bool movimento, bool mostrarHitbox);
 		void andar(bool cima, bool baixo, bool esquerda, bool direita, int larguraTela, int alturaTela, Ponto mouse);
 		void atirar(Lista<Projetil>& listaProjetil, Ponto ponto_mouse, bool click);
@@ -49,15 +50,18 @@ class Player{
 		void setArma(int arma);
 		int getDinheiro();
 		void setDinheiro(int dinheiro);
-		int getVelocidade();
-		void setVelocidade(int velocidade);
-		
+		double getVelocidade();
+		void setVelocidade(double velocidade);
+		double getVelocidadeMax();
+
+
+
 		Ponto getVertice(int i);
-		
+
 		void atualizaAngulo(Ponto mouse);
-		
+
 		static void initImagens();
-		
+
 		void init();
 };
 
